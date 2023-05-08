@@ -1,9 +1,9 @@
 
-AVRASM ver. 2.2.8  E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm Mon May 08 22:28:40 2023
+AVRASM ver. 2.2.8  E:\assembly_atmel\AssemblerApplication2\AssemblerApplication2\main.asm Mon May 08 20:30:41 2023
 
 [builtin](2): Including file 'D:/AtmelStudio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
                                  
-                                 ldi r16, 0x12
+                                 ; Basic sum up
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
                                  ;*************************************************************************
@@ -983,14 +983,30 @@ AVRASM ver. 2.2.8  E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1
                                  #endif  /* _M328PDEF_INC_ */
                                  
                                  ; ***** END OF FILE ******************************************************
-000000 e102                      
-000001 e314                      ldi r17, 0x34
-000002 9300 0402                 sts 0x402, r16
-000004 9310 0403                 sts 0x403, r17
-                                 ; Store a 16-bit number 0x5678 at SRAM location 0x408
-000006 e506                      ldi r16, 0x56
-000007 e718                      ldi r17, 0x78
-000008 9300 0408                 sts 0x408, r16
+                                 
+000000 e133                      ldi r19,19	; r16 = 19
+000001 e54f                      ldi r20,95	; r17 = 95
+000002 e055                      ldi r21,5	; r21 = 5
+                                 ; r19 + r20 + r21
+000003 0f34                      add r19,r20
+000004 0f35                      add r19,r21
+                                 
+                                 ; Basic substract
+000005 1b39                      sub r19, r25	; r19 - r25
+                                 
+                                 ; Some instructions
+000006 9533                      inc r19		; r19 + 1
+000007 953a                      dec r19		; r19 - 1
+                                 
+                                 ; SRAM Addressing
+000008 9160 0080                 lds r22, 0x80	;r22 = [0x80]
+00000a 9360 0081                 sts 0x81, r22	; [0x81] = r22 = [0x80]
+                                 ;Store 55 into [0x80]
+00000c e575                      ldi r23, 0x55
+00000d 9370 0080                 sts 0x80, r23
+                                 
+                                 ; Dataspace Addressing
+00000f b61f                      in r1,0x3f	; r1 = SREG
 
 
 RESOURCE USE INFORMATION
@@ -1008,15 +1024,15 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   1 r2 :   1 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   4 r17:   4 r18:   0 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   6 r20:   2 
+r21:   2 r22:   2 r23:   2 r24:   0 r25:   1 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 2 out of 35 (5.7%)
+Registers used: 8 out of 35 (22.9%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
@@ -1024,23 +1040,23 @@ brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
+cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   1 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   4 lds   :   1 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   4 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 2 out of 113 (1.8%)
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   2 
+sub   :   1 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 8 out of 113 (7.1%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000018     24      0     24   32768   0.1%
+[.cseg] 0x000000 0x000022     34      0     34   32768   0.1%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
