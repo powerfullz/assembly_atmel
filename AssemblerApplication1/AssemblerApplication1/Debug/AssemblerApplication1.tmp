@@ -10,6 +10,7 @@
  <SOURCE_FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>D:/AtmelStudio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>D:/AtmelStudio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
@@ -22,5 +23,11 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
+  <storeHigh><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>18</LINE></storeHigh>
+  <store_eeprom_low><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>29</LINE></store_eeprom_low>
+  <move_to_SRAM><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>50</LINE></move_to_SRAM>
+  <sum_numbers><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>66</LINE></sum_numbers>
+  <end><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>74</LINE></end>
+  <NUMS><FILE>E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>79</LINE></NUMS>
  </LABELS>
 </ASSEMBLER_INFO>

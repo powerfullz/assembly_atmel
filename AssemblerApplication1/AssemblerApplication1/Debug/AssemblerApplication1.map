@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm Mon May 08 22:28:40 2023
+AVRASM ver. 2.2.8  E:\assembly_atmel\AssemblerApplication1\AssemblerApplication1\main.asm Fri May 19 16:05:04 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,3 +695,9 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
+CSEG storeHigh    0000000e
+CSEG store_eeprom_low 00000017
+CSEG move_to_SRAM 00000025
+CSEG sum_numbers  00000030
+CSEG end          00000036
+CSEG NUMS         00000488
