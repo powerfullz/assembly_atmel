@@ -1,0 +1,20 @@
+.ORG 0
+LDI R16, 0x0
+OUT DDRC, R16
+LDI R16, 0xFF
+OUT DDRD, R16
+LDI ZH, HIGH(ASCII_TABLE<<1)	; Note that program memory is word addressed, so we need to double the byte address by <<1
+
+.ORG 0x20
+ASCII_TABLE:
+.DB 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07
+
+BEGIN:
+IN R16, PINC
+ANDI R16, 0b00000111
+LDI ZL, LOW(ASCII_TABLE<<1)
+ADD ZL, R16
+LPM R17, Z
+OUT PORTD, R17
+RJMP BEGIN
+
